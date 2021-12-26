@@ -1,5 +1,5 @@
 {
-  "name": "barebones",
+  "name": "LocalSEO",
   "version": "3.0.0",
   "author": "Benchmark Studios",
   "description": "A lightweight and skeletal WordPress boilerplate theme for HTML5 and beyond",
@@ -9,7 +9,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benchmarkstudios/barebones.git"
+    "url": "git+https://github.com/DevChrisVienna/entruempelung.git"
   },
   "keywords": [
     "barebones",
@@ -18,9 +18,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/benchmarkstudios/barebones/issues"
+    "url": "https://github.com/DevChrisVienna/entruempelung/issues"
   },
-  "homepage": "https://github.com/benchmarkstudios/barebones#readme",
+  "homepage": "https://github.com/DevChrisVienna/entruempelung#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
