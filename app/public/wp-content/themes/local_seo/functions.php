@@ -307,3 +307,5 @@ function front_page_on_pages_menu() {
 }
 
 add_action( 'admin_menu' , 'front_page_on_pages_menu' );
+
+
