@@ -5,6 +5,7 @@
  */
 
 require_once 'includes/custom-functions.php';
+require_once 'includes/components/topbar-component.php';
 
 
 /**

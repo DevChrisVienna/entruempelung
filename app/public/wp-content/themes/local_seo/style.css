@@ -753,7 +753,7 @@ table {
   border: 0; }
 
 body {
-  color: #444;
+  color: #EF7F1A;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-text-size-adjust: none;
@@ -795,7 +795,7 @@ a {
   color: #444;
   text-decoration: none; }
   a:hover {
-    color: #444;
+    color: #EF7F1A;
     text-decoration: underline; }
 
 a[href^="tel"] {
@@ -810,7 +810,7 @@ a[href^="tel"] {
  */
 hr {
   height: 1px;
-  background-color: #444; }
+  background-color: #EF7F1A; }
 
 .grid {
   display: grid;
@@ -894,10 +894,10 @@ input,
 select,
 textarea {
   background-color: #fff;
-  border: solid 1px #444;
+  border: solid 1px #EF7F1A;
   -webkit-border-radius: 0;
           border-radius: 0;
-  color: #444;
+  color: #EF7F1A;
   line-height: 36px;
   height: 36px;
   padding: 0 12px;
