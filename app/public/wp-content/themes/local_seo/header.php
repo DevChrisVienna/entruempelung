@@ -19,15 +19,15 @@
     </head>
     <body <?php body_class(); ?>>
         <header class="header" role="banner">
-                    <?php echo topbar_view(); ?>
+        <?php echo topbar_view(); ?>
             <div class="container">
             <div class="row flex">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
  
 
                     <a href="<?php echo get_bloginfo( 'url' ); ?>" class="header__logo">
                         <?php echo is_front_page() ? '<h1>' : ''; ?>
-                            <img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/logo.png" onerror="this.src='<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/logo.png'" alt="<?php echo get_bloginfo( 'title' ); ?>" />
+                        <?php echo logo_view(); ?>
                         <?php echo is_front_page() ? '</h1>' : ''; ?>
                     </a>
                 </div>

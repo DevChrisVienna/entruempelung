@@ -1,11 +1,16 @@
 <?php
 
+
 /**
  * Custom functions / External files
  */
 
 require_once 'includes/custom-functions.php';
 require_once 'includes/components/topbar-component.php';
+require_once 'includes/components/logo-component.php';
+
+
+require_once 'includes/models/basic-data-model.php';
 
 
 /**
