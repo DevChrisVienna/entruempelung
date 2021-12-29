@@ -11,27 +11,6 @@
 
 
 
-/**
- * taxoniomies for pages
- */
-function add_taxonomies_to_pages() {
-    register_taxonomy_for_object_type( 'post_tag', 'page' );
-    register_taxonomy_for_object_type( 'category', 'page' );
-    }
-   add_action( 'init', 'add_taxonomies_to_pages' );
-    if ( ! is_admin() ) {
-    add_action( 'pre_get_posts', 'category_and_tag_archives' );
-    
-    }
-   function category_and_tag_archives( $wp_query ) {
-   $my_post_array = array('post','page');
-    
-    if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) )
-    $wp_query->set( 'post_type', $my_post_array );
-    
-    if ( $wp_query->get( 'tag' ) )
-    $wp_query->set( 'post_type', $my_post_array );
-   }
 
 
 /**
@@ -72,16 +51,25 @@ function create_page($title_of_the_page,$content,$parent_id = NULL )
 create_page( 'Über uns', '');
 create_page( 'Impressum', '');
 create_page( 'AGB', '');
+create_page( 'Kontakt', '');
 
 
 
-function create_post($title_of_the_page,$content,$cat_id = NULL ) 
+
+
+
+/**
+ * auto post creation helper Function 
+ */
+
+
+function create_post($title_of_the_page,$content,$cat_id = NULL, $post_type = NULL ) 
 {
-    $objPage = get_page_by_title($title_of_the_page, 'OBJECT', 'post');
-    if( ! empty( $objPage ) )
+    $objPost = get_page_by_title($title_of_the_page, 'OBJECT', $post_type);
+    if( ! empty( $objPost ) )
     {
-        //echo "Page already exists:" . $title_of_the_page . "<br/>";
-        return $objPage->ID;
+        echo "Page already exists:" . $title_of_the_page . "<br/>";
+        return $objPost->ID;
     }
     
     $page_id = wp_insert_post(
@@ -93,7 +81,7 @@ function create_post($title_of_the_page,$content,$cat_id = NULL )
             'post_name'      => strtolower(str_replace(' ', '-', trim($title_of_the_page))),
             'post_status'    => 'publish',
             'post_content'   => $content,
-            'post_type'      => 'post',
+            'post_type'      => $post_type,
             'post_category' => array($cat_id),
             )
         );
@@ -101,7 +89,49 @@ function create_post($title_of_the_page,$content,$cat_id = NULL )
     return $page_id;
 }
 
-$business_field = 'Entrümpelungen';
-$location = '1010 Wien'; 
 
-create_post( $business_field . ' ' . $location , '', '2');
+
+
+function cptui_register_my_taxes() {
+
+	/**
+	 * Taxonomy: Einsatzgebiete
+	 */
+
+	$labels = [
+		"name" => __( "Einsatzgebiete", "local_seo" ),
+		"singular_name" => __( "Einsatzgebiete", "local_seo" ),
+	];
+
+	
+	$args = [
+		"label" => __( "Einsatzgebiete", "local_seo" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'Einsatzgebiete', 'with_front' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "einsatzgebiete",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "einsatzgebiete", [ "landingpages" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes' );
+
+
+//$business_field = 'Entrümpelungen';
+$location = '1010 Wien'; 
+$post_type = 'Landing Pages';
+//create_post( $business_field . ' ' . $location , '', '2', 'Landing Pages');
+
+//$pid = create_post( 'Sample Page', 'This is sample page');
+//create_post( $business_field . ' ' . $location , $pid, '', 'Landing Pages');

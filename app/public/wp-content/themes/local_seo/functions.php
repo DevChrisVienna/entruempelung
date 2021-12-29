@@ -6,6 +6,7 @@
  */
 
 require_once 'includes/custom-functions.php';
+require_once 'includes/init/post-type-creation.php';
 require_once 'includes/components/topbar-component.php';
 require_once 'includes/components/logo-component.php';
 
